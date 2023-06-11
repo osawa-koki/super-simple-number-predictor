@@ -6,6 +6,7 @@ import {
   registerables
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import setting from '../setting'
 
 ChartJS.register(
   ...registerables
@@ -91,7 +92,7 @@ export default function DrawPredict (props: {
         const formData = new FormData()
         formData.append('image', new File([imageBytes], 'image.png', { type: 'image/png' }))
         // Perform the fetch request
-        fetch('/api/numeric-judge', {
+        fetch(`${setting.apiPath}/api/numeric-judge`, {
           method: 'POST',
           body: formData
         })
