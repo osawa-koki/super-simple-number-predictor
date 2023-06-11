@@ -8,10 +8,10 @@ import uuid
 
 app = FastAPI()
 
-# CORSを許可する
+# CORSを許可する。
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:8080"],
+    allow_origins=["http://localhost:3000", "http://localhost:8000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -23,22 +23,22 @@ def health():
 
 # @app.post("/api/numeric-judge")
 # def receive_image(image: bytes = File(...)):
-#     # GUIDを生成する
+#     # GUIDを生成する。
 #     guid = uuid.uuid4()
-#     # GUIDを小文字に変換する
+#     # GUIDを小文字に変換する。
 #     guid = guid.hex.lower()
 
-#     # ファイル名
+#     # ファイル名を定義する。
 #     filename = f"./tmp/{guid}.png"
 
-#     # 画像を保存する
+#     # 画像を保存する。
 #     with open(filename, "wb") as f:
 #         f.write(image)
 
-#     # 画像を予測する
+#     # 画像を予測する。
 #     result = predict(filename)
 
-#     # 予測結果を返す
+#     # 予測結果を返す。
 #     return result
 
 # # Serve static files from the "www" directory and set index.html as the default file
@@ -48,4 +48,4 @@ def health():
 if __name__ == "__main__":
     import uvicorn
     print("Starting server...")
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
