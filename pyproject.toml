@@ -10,7 +10,8 @@ packages = [{include = "app"}]
 python = "^3.11"
 fastapi = "^0.96.1"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
-
+numpy = "^1.24.3"
+opencv-python = "^4.7.0.72"
 
 [build-system]
 requires = ["poetry-core"]
