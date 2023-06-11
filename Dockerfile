@@ -8,6 +8,7 @@ RUN yarn build
 FROM python:3.11 as server
 EXPOSE 8000
 WORKDIR /app
+RUN apt update -y && apt install libgl1-mesa-dev -y
 RUN pip install poetry && poetry config virtualenvs.create false
 COPY pyproject.toml poetry.lock ./
 COPY . .
