@@ -977,6 +977,58 @@ files = [
 ]
 
 [[package]]
+name = "tensorflow"
+version = "2.13.0rc1"
+description = "TensorFlow is an open source machine learning framework for everyone."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "tensorflow-2.13.0rc1-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:ba86c0282fbec230e799731dba3e565aa55c65e850b310c1cfe51c5089ea074c"},
+    {file = "tensorflow-2.13.0rc1-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:e709c7128561450533daa83403b795692fe72d1e74389217a76fe96dbe09a43f"},
+    {file = "tensorflow-2.13.0rc1-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:570ace9756a3343b6b0f207396033f2ad4674dd68d17042bef0b1a53ff2c69fa"},
+    {file = "tensorflow-2.13.0rc1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:c2a30b0e8ab94b4cf162c93b07c446c4b05d15f36106b621a0f69258521346eb"},
+    {file = "tensorflow-2.13.0rc1-cp310-cp310-win_amd64.whl", hash = "sha256:cb2bce43363e51b56ecb59d5a1db61e7975b0dff8f21e4ee7e93398ec8acc9b7"},
+    {file = "tensorflow-2.13.0rc1-cp311-cp311-macosx_10_15_x86_64.whl", hash = "sha256:bd0d5df8a1f317769bc2a1393edaa727dae0414f9c44c80ee1e1a07fd3d59879"},
+    {file = "tensorflow-2.13.0rc1-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:28c4a328e2fb8e4e6324193e82f147a8c4bedd923aa94226780d5b3f93ad0846"},
+    {file = "tensorflow-2.13.0rc1-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:88613a1b00dd0679a49e76c7297ad61d1bac959a475332ae73415d95e76dca4d"},
+    {file = "tensorflow-2.13.0rc1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:cc42c587a13fa7eae8fab4bfe1f6c5cf07e157c1b097c4bb7228af2b62e36631"},
+    {file = "tensorflow-2.13.0rc1-cp311-cp311-win_amd64.whl", hash = "sha256:1a49bb67f671c5758bd99ba3727ea8556c009691bab3f69330906fc5471aa002"},
+    {file = "tensorflow-2.13.0rc1-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:67fb4dd44d20ef929c9f3962d4dca8e75907affe6cd38849c5f77fb77796e192"},
+    {file = "tensorflow-2.13.0rc1-cp38-cp38-macosx_12_0_arm64.whl", hash = "sha256:7a813424963fcfd5f0deaea0398b49b48ec5d9597943a8d06d29484d064c0a88"},
+    {file = "tensorflow-2.13.0rc1-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bb79e1e164480f56398995c382ead82a353ff7a8d58d4c6ba1f4e922f62d0f8f"},
+    {file = "tensorflow-2.13.0rc1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:53ce5c8bfe5a5cc02bb5e20a89570d93e07636599633e53b3b6c46de4f226f31"},
+    {file = "tensorflow-2.13.0rc1-cp38-cp38-win_amd64.whl", hash = "sha256:8d5c675cfdb1cc39f88e29933c131dd4dd5ba45b064469bcbaced5f959c54a9f"},
+    {file = "tensorflow-2.13.0rc1-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:a0c26b6c6f6898a4a7651bffa7d93ce15b8f9ac64f590e2b406158dddbd13da0"},
+    {file = "tensorflow-2.13.0rc1-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:5f12a69b11e70bbf67271a26317d4d44f59f6907cdae6fea68f52bdb28cf5783"},
+    {file = "tensorflow-2.13.0rc1-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:48f9dad6f834044687e15b3b50c48374d6844d81a5d6c16f60b5df99bb311b2c"},
+    {file = "tensorflow-2.13.0rc1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:07ad240fd8b495617a57764ab1d5ddfde373992d2826337a1fcad201af236109"},
+    {file = "tensorflow-2.13.0rc1-cp39-cp39-win_amd64.whl", hash = "sha256:354b94c6f94faa83cde034bbf4b5b9436966657b8fbe77520e9c40dd1db441f5"},
+]
+
+[package.dependencies]
+absl-py = ">=1.0.0"
+astunparse = ">=1.6.0"
+flatbuffers = ">=23.1.21"
+gast = ">=0.2.1,<=0.4.0"
+google-pasta = ">=0.1.1"
+grpcio = ">=1.24.3,<2.0"
+h5py = ">=2.9.0"
+keras = ">=2.13.1rc0,<2.14"
+libclang = ">=13.0.0"
+numpy = ">=1.22"
+opt-einsum = ">=2.3.2"
+packaging = "*"
+protobuf = ">=3.20.3,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<5.0.0dev"
+setuptools = "*"
+six = ">=1.12.0"
+tensorboard = ">=2.13,<2.14"
+tensorflow-estimator = ">=2.13.0rc0,<2.14"
+tensorflow-io-gcs-filesystem = {version = ">=0.23.1", markers = "platform_machine != \"arm64\" or platform_system != \"Darwin\""}
+termcolor = ">=1.1.0"
+typing-extensions = ">=3.6.6"
+wrapt = ">=1.11.0"
+
+[[package]]
 name = "tensorflow-estimator"
 version = "2.13.0rc0"
 description = "TensorFlow Estimator."
@@ -1015,42 +1067,6 @@ tensorflow-aarch64 = ["tensorflow-aarch64 (>=2.12.0,<2.13.0)"]
 tensorflow-cpu = ["tensorflow-cpu (>=2.12.0,<2.13.0)"]
 tensorflow-gpu = ["tensorflow-gpu (>=2.12.0,<2.13.0)"]
 tensorflow-rocm = ["tensorflow-rocm (>=2.12.0,<2.13.0)"]
-
-[[package]]
-name = "tensorflow-macos"
-version = "2.13.0rc1"
-description = "TensorFlow is an open source machine learning framework for everyone."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "tensorflow_macos-2.13.0rc1-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:58fd01b70069b1465e2a423d8ca375e6520a9ad7fb70f420a3aea97f84d9eaca"},
-    {file = "tensorflow_macos-2.13.0rc1-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:65b2e9078755be234debc5aa37b38086ee66ea0ef65216e5be16170e202fdea8"},
-    {file = "tensorflow_macos-2.13.0rc1-cp38-cp38-macosx_12_0_arm64.whl", hash = "sha256:5667bc90bd46f11fc6cad13424bbcafbd7d2008e6234281d7a879c44dbf05e05"},
-    {file = "tensorflow_macos-2.13.0rc1-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:6ae8479dc0d7d0665813c90ab5a7715b82bf4b9ff80d2663da2671b9395bbc1e"},
-]
-
-[package.dependencies]
-absl-py = ">=1.0.0"
-astunparse = ">=1.6.0"
-flatbuffers = ">=23.1.21"
-gast = ">=0.2.1,<=0.4.0"
-google-pasta = ">=0.1.1"
-grpcio = ">=1.24.3,<2.0"
-h5py = ">=2.9.0"
-keras = ">=2.13.1rc0,<2.14"
-libclang = ">=13.0.0"
-numpy = ">=1.22"
-opt-einsum = ">=2.3.2"
-packaging = "*"
-protobuf = ">=3.20.3,<4.21.0 || >4.21.0,<4.21.1 || >4.21.1,<4.21.2 || >4.21.2,<4.21.3 || >4.21.3,<4.21.4 || >4.21.4,<4.21.5 || >4.21.5,<5.0.0dev"
-setuptools = "*"
-six = ">=1.12.0"
-tensorboard = ">=2.13,<2.14"
-tensorflow-estimator = ">=2.13.0rc0,<2.14"
-tensorflow-io-gcs-filesystem = {version = ">=0.23.1", markers = "platform_machine != \"arm64\" or platform_system != \"Darwin\""}
-termcolor = ">=1.1.0"
-typing-extensions = ">=3.6.6"
-wrapt = ">=1.11.0"
 
 [[package]]
 name = "termcolor"
@@ -1392,5 +1408,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = "3.11.3"
-content-hash = "917058fc62027ad3159609641a9f958bea3be63cecbb0b04b55ee1fb6448e28f"
+python-versions = "3.11.x"
+content-hash = "3b937c39b40124b91d0e458aa3c3eac0c7d145c4436e71e5192af99ec54f80f2"
