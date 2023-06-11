@@ -3,5 +3,15 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-	"remoteUser": "root"
+	"remoteUser": "root",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"GitHub.copilot-nightly",
+				"ms-python.python",
+				"dbaeumer.vscode-eslint",
+				"EditorConfig.EditorConfig"
+			]
+		}
+	}
 }
