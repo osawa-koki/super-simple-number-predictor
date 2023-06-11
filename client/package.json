@@ -5,7 +5,7 @@
     "develop": "next",
     "build": "next build && next export -o ./dist",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@types/bootstrap": "^5.2.6",
