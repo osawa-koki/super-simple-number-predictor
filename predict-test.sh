@@ -1,5 +1,5 @@
 
-success_bit=true
+success_flag=true
 success_threshold=35
 
 for i in `seq 1 9`
@@ -9,11 +9,11 @@ do
     echo -e "\e[32mOK\e[m $i -> $probability%"
   else
     echo -e "\e[31mNG\e[m $i -> $probability%"
-    success_bit=false
+    success_flag=false
   fi
 done
 
-if $success_bit; then
+if $success_flag; then
   echo -e "\e[32m+ SUCCESS!!!\e[m"
   exit 0
 else
