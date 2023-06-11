@@ -27,6 +27,28 @@ main {
   }
 }
 
+$footer_height: 5; // rem
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: #{$footer_height}rem;
+  background-color: lightgray;
+  a {
+    color: #0e6dfe;
+    text-decoration: none;
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      border-right: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 #Links {
   display: flex;
   a {
@@ -43,6 +65,36 @@ main {
     }
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+#NumericJudger {
+  margin: 3rem auto;
+  max-width: 1000px;
+  display: flex;
+  padding: 1rem;
+  #CnavasDiv {
+    #Canvas {
+      border: 1px lightgray solid;
+      aspect-ratio: 1/1;
+    }
+    #ButtonContainer {
+      display: flex;
+      justify-content: center;
+      margin: 0.3rem 0;
+      button {
+        margin: 0 0.2rem;
+      }
+    }
+  }
+  #ChartDiv {
+    margin-left: 1rem;
+    width: 100%;
+    #Chart {
+      border: 1px lightgray solid;
+      width: 100%;
+      height: 100%;
     }
   }
 }

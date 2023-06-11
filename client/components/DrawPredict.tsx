@@ -6,6 +6,7 @@ import {
   registerables,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2';
+import Layout from './Layout';
 
 ChartJS.register(
   ...registerables,
@@ -23,7 +24,21 @@ const options = {
   },
 };
 
-function MyDrawing() {
+export default function DrawPredict(props: {
+  model_id: number;
+  model_name: string;
+  model_description: string;
+  model_accuracy: number;
+  model_loss: number;
+}) {
+
+  const {
+    model_id,
+    model_name,
+    model_description,
+    model_accuracy,
+    model_loss,
+  } = props;
 
   const [canvas, setCanvas] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -38,8 +53,8 @@ function MyDrawing() {
     try {
       setPredicted([]);
       setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 10)); // ちょっと待つ
-      // 画像をバイナリに変換
+      await new Promise(resolve => setTimeout(resolve, 10)); // ちょっと待つ。
+      // 画像をバイナリに変換。
       // create a new canvas element to store the data
       const dataCanvas = document.createElement('canvas');
       dataCanvas.width = canvas.getWidth();
@@ -110,32 +125,30 @@ function MyDrawing() {
   }, []);
 
   return (
-    <div id='NumericJudger'>
-      <div id='CnavasDiv'>
-        <div id='Canvas'><canvas id="myCanvas" width={300} height={300} /></div>
-        <div id='ButtonContainer'>
-          <Button variant="outline-secondary" onClick={ClearCanvas} disabled={loading}>Delete</Button>
-          <Button variant="outline-primary" onClick={Judge} disabled={loading}>
-            {loading ? 'Loading………' : '🦁 Judge 🦁'}
-          </Button>
+      <div id="DrawPredict">
+        <div id='CnavasDiv'>
+          <div id='Canvas'><canvas id="myCanvas" width={300} height={300} /></div>
+          <div id='ButtonContainer'>
+            <Button variant="outline-secondary" onClick={ClearCanvas} disabled={loading}>Delete</Button>
+            <Button variant="outline-primary" onClick={Judge} disabled={loading}>
+              {loading ? 'Loading………' : '🦁 Judge 🦁'}
+            </Button>
+          </div>
+        </div>
+        <div id='ChartDiv'>
+          <Bar
+            data={{
+              labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+              datasets: [
+                {
+                  label: 'Probability',
+                  data: predicted,
+                }
+              ],
+            }}
+            options={options}
+          />
         </div>
       </div>
-      <div id='ChartDiv'>
-        <Bar
-          data={{
-            labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-            datasets: [
-              {
-                label: 'Probability',
-                data: predicted,
-              }
-            ],
-          }}
-          options={options}
-        />
-      </div>
-    </div>
   );
 };
-
-export default MyDrawing;

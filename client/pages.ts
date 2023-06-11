@@ -2,19 +2,13 @@
 const pages = [
   {
     path: "/",
+    emoji: "🏠",
     name: "Home",
   },
   {
-    path: "/about",
-    name: "About",
-  },
-  {
-    path: "/contact",
-    name: "Contact",
-  },
-  {
-    path: "/numeric-judger",
-    name: "numeric-judger",
+    path: "/model-1/",
+    emoji: "📈",
+    name: "Model 1",
   },
 ];
 

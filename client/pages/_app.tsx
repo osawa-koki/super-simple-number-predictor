@@ -1,11 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../styles/styles.scss';
-
-import '../styles/index.scss';
-import '../styles/about.scss';
-import '../styles/contact.scss';
-import '../styles/numeric-judger.scss';
+import '../styles/menu.scss';
+import '../styles/draw_predict.scss';
 
 import Head from 'next/head';
 
