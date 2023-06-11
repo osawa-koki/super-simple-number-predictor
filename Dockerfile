@@ -10,7 +10,7 @@ EXPOSE 8000
 WORKDIR /app
 RUN pip install poetry && poetry config virtualenvs.create false
 COPY pyproject.toml poetry.lock ./
-RUN poetry install
 COPY . .
+RUN poetry install
 COPY --from=client /src/dist /app/www
 CMD ["poetry", "run", "python", "./app/main.py"]
