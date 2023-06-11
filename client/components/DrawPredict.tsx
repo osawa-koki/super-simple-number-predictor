@@ -6,6 +6,7 @@ import {
   registerables
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import setting from '../setting'
 
 ChartJS.register(
   ...registerables
@@ -60,8 +61,9 @@ export default function DrawPredict (props: {
       // 画像をバイナリに変換。
       // create a new canvas element to store the data
       const dataCanvas = document.createElement('canvas')
-      dataCanvas.width = canvas.getWidth()
-      dataCanvas.height = canvas.getHeight()
+      const size = canvas.getWidth() * 2 // TODO: なぜか、canvasのサイズが半分になってしまうので、2倍にしておく。
+      dataCanvas.width = size
+      dataCanvas.height = size
 
       // copy the data from the original canvas to the new canvas
       const ctx = dataCanvas.getContext('2d')
@@ -91,7 +93,7 @@ export default function DrawPredict (props: {
         const formData = new FormData()
         formData.append('image', new File([imageBytes], 'image.png', { type: 'image/png' }))
         // Perform the fetch request
-        fetch('/api/numeric-judge', {
+        fetch(`${setting.apiPath}/api/numeric-judge`, {
           method: 'POST',
           body: formData
         })
