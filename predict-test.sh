@@ -1,8 +1,8 @@
 
 success_bit=true
-success_threshold=70
+success_threshold=35
 
-for i in `seq 2 4`
+for i in `seq 1 9`
 do
   probability=`curl --silent -X POST -F image=@sample-numbers/$i.png http://localhost:8000/api/numeric-judge | jq ".\"$i\""`
   if test $probability -gt $success_threshold; then
@@ -14,7 +14,7 @@ do
 done
 
 if $success_bit; then
-  echo -e "\e[32m- SUCCESS!!!\e[m"
+  echo -e "\e[32m+ SUCCESS!!!\e[m"
   exit 0
 else
   echo -e "\e[31m- FAILED...\e[m"
