@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.8
 EXPOSE 8000
 WORKDIR /app
 RUN pip install poetry && poetry config virtualenvs.create false
