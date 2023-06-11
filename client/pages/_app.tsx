@@ -1,14 +1,14 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import '../styles/styles.scss';
-import '../styles/menu.scss';
-import '../styles/draw_predict.scss';
+import '../styles/styles.scss'
+import '../styles/menu.scss'
+import '../styles/draw_predict.scss'
 
-import Head from 'next/head';
+import Head from 'next/head'
 
-import setting from '../setting';
+import setting from '../setting'
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp ({ Component, pageProps }) {
   return (
     <>
       <Head>
@@ -19,5 +19,5 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
     </>
-  );
+  )
 };

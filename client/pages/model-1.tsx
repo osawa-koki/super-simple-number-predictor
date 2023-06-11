@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../components/Layout';
-import DrawPredict from '../components/DrawPredict';
+import React, { useState, useEffect } from 'react'
+import Layout from '../components/Layout'
+import DrawPredict from '../components/DrawPredict'
 
-export default function Model1() {
+export default function Model1 () {
   return (
     <Layout>
       <DrawPredict
@@ -13,5 +13,5 @@ export default function Model1() {
         model_loss={0.001}
       />
     </Layout>
-  );
+  )
 };
