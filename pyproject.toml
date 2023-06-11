@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "super-simple-number-predictor"
+version = "0.1.0"
+description = ""
+authors = ["osawa-koki <github@osawa.dev>"]
+readme = "README.md"
+packages = [{include = "super_simple_number_predictor"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
