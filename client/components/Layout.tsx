@@ -1,21 +1,21 @@
-import React, { ReactNode } from 'react';
-import Head from 'next/head';
-import setting from '../setting';
-import Menu from './Menu';
+import React, { type ReactNode } from 'react'
+import Head from 'next/head'
+import setting from '../setting'
+import Menu from './Menu'
 
-type Props = {
-  children?: ReactNode;
-  title?: string;
-  menu?: boolean;
-  footer?: boolean;
-};
+interface Props {
+  children?: ReactNode
+  title?: string
+  menu?: boolean
+  footer?: boolean
+}
 
 const Layout = ({
   children,
   title = setting.title,
   menu = true,
-  footer = true,
-}: Props) => (
+  footer = true
+}: Props): JSX.Element => (
   <div>
     <Head>
       <title>{title}</title>
@@ -28,14 +28,16 @@ const Layout = ({
       />
     </Head>
     <div id="Wrapper">
-      {menu ? (
+      {menu
+        ? (
         <>
           <main>{children}</main>
           <Menu />
         </>
-      ) : (
-        children
-      )}
+          )
+        : (
+            children
+          )}
     </div>
     {footer && (
       <footer>
@@ -49,6 +51,6 @@ const Layout = ({
       </footer>
     )}
   </div>
-);
+)
 
-export default Layout;
+export default Layout

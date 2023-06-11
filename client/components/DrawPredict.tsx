@@ -1,128 +1,135 @@
-import React, { useState, useEffect } from 'react';
-import { fabric } from "fabric";
-import Button from 'react-bootstrap/Button';
+import React, { useState, useEffect } from 'react'
+import { fabric } from 'fabric'
+import Button from 'react-bootstrap/Button'
 import {
   Chart as ChartJS,
-  registerables,
+  registerables
 } from 'chart.js'
-import { Bar } from 'react-chartjs-2';
-import Layout from './Layout';
+import { Bar } from 'react-chartjs-2'
 
 ChartJS.register(
-  ...registerables,
-);
+  ...registerables
+)
 
 const options = {
   scales: {
     y: {
       ticks: {
-        callback: function(value: number, _: any) {
-          return `${value} %`;
-        },
-      },
-    },
-  },
-};
+        callback: function (value: number, _: any) {
+          return `${value} %`
+        }
+      }
+    }
+  }
+}
 
-export default function DrawPredict(props: {
-  model_id: number;
-  model_name: string;
-  model_description: string;
-  model_accuracy: number;
-  model_loss: number;
-}) {
-
+export default function DrawPredict (props: {
+  modelId: number
+  modelName: string
+  modelDescription: string
+  modelAccuracy: number
+  modelLoss: number
+}): JSX.Element {
   const {
-    model_id,
-    model_name,
-    model_description,
-    model_accuracy,
-    model_loss,
-  } = props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelId,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelName,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelDescription,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelAccuracy,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelLoss
+  } = props
 
-  const [canvas, setCanvas] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [predicted, setPredicted] = useState<number[]>([]);
+  const [canvas, setCanvas] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [predicted, setPredicted] = useState<number[]>([])
 
-  const ClearCanvas = () => {
-    canvas.remove.apply(canvas, canvas.getObjects());
-    canvas.backgroundColor = 'white';
+  const ClearCanvas = (): void => {
+    canvas.remove.apply(canvas, canvas.getObjects())
+    canvas.backgroundColor = 'white'
   }
 
-  const Judge = async () => {
+  const Judge = async (): Promise<void> => {
     try {
-      setPredicted([]);
-      setLoading(true);
-      await new Promise(resolve => setTimeout(resolve, 10)); // ちょっと待つ。
+      setPredicted([])
+      setLoading(true)
+      await new Promise(resolve => setTimeout(resolve, 10)) // ちょっと待つ。
       // 画像をバイナリに変換。
       // create a new canvas element to store the data
-      const dataCanvas = document.createElement('canvas');
-      dataCanvas.width = canvas.getWidth();
-      dataCanvas.height = canvas.getHeight();
+      const dataCanvas = document.createElement('canvas')
+      dataCanvas.width = canvas.getWidth()
+      dataCanvas.height = canvas.getHeight()
 
       // copy the data from the original canvas to the new canvas
-      const ctx = dataCanvas.getContext('2d');
-      ctx.drawImage(canvas.getElement(), 0, 0);
+      const ctx = dataCanvas.getContext('2d')
+      if (ctx == null) {
+        console.error('ctx is null.')
+        return
+      }
+      ctx.drawImage(canvas.getElement(), 0, 0)
 
       // get the data from the new canvas as a binary data
-      const data = dataCanvas.toDataURL('image/png');
-      const binaryData = atob(data.split(',')[1]);
-      const buffer = new Uint8Array(binaryData.length);
-      for (var i = 0; i < binaryData.length; i++) {
-        buffer[i] = binaryData.charCodeAt(i);
+      const data = dataCanvas.toDataURL('image/png')
+      const binaryData = atob(data.split(',')[1])
+      const buffer = new Uint8Array(binaryData.length)
+      for (let i = 0; i < binaryData.length; i++) {
+        buffer[i] = binaryData.charCodeAt(i)
       }
       // Blobを作成
-      const blob = new Blob([buffer.buffer]);
+      const blob = new Blob([buffer.buffer])
 
       // Create a new FileReader
-      const reader = new FileReader();
+      const reader = new FileReader()
 
       // Add an event listener for when the file is loaded
-      reader.addEventListener("load", function () {
-        const imageBytes = new Uint8Array(reader.result as ArrayBuffer);
+      reader.addEventListener('load', function () {
+        const imageBytes = new Uint8Array(reader.result as ArrayBuffer)
         // Create FormData object
-        const formData = new FormData();
-        formData.append('image', new File([imageBytes], "image.png", { type: "image/png" }));
+        const formData = new FormData()
+        formData.append('image', new File([imageBytes], 'image.png', { type: 'image/png' }))
         // Perform the fetch request
         fetch('/api/numeric-judge', {
           method: 'POST',
-          body: formData,
+          body: formData
         })
-        .then(res => res.json())
-        .then(data => {
-          let predicted: number[] = [];
-          for (let i = 0; i < 10; i++) {
-            predicted.push(data[i]);
-          }
-          setPredicted(predicted);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error(err);
-          setLoading(false);
-        });
-      }, false);
+          .then(async res => await res.json())
+          .then(data => {
+            const predicted: number[] = []
+            for (let i = 0; i < 10; i++) {
+              predicted.push(data[i])
+            }
+            setPredicted(predicted)
+            setLoading(false)
+          })
+          .catch(err => {
+            console.error(err)
+            setLoading(false)
+          })
+      }, false)
 
       // Read the file as an ArrayBuffer
-      reader.readAsArrayBuffer(blob);
+      reader.readAsArrayBuffer(blob)
     } catch (ex) {
-      console.error(ex);
+      console.error(ex)
     }
-  };
+  }
 
   useEffect(() => {
-    if (canvas === null) return;
-    canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-    canvas.freeDrawingBrush.width=10;
-    canvas.freeDrawingBrush.color="black";
-    canvas.isDrawingMode = true;
-    ClearCanvas();
-  }, [canvas]);
+    if (canvas === null) return
+    canvas.freeDrawingBrush = new fabric.PencilBrush(canvas)
+    canvas.freeDrawingBrush.width = 10
+    canvas.freeDrawingBrush.color = 'black'
+    canvas.isDrawingMode = true
+    ClearCanvas()
+  }, [canvas])
 
   useEffect(() => {
-    const canvas = new fabric.Canvas('myCanvas');
-    setCanvas(canvas);
-  }, []);
+    const canvas = new fabric.Canvas('myCanvas')
+    setCanvas(canvas)
+  }, [])
 
   return (
       <div id="DrawPredict">
@@ -130,6 +137,7 @@ export default function DrawPredict(props: {
           <div id='Canvas'><canvas id="myCanvas" width={300} height={300} /></div>
           <div id='ButtonContainer'>
             <Button variant="outline-secondary" onClick={ClearCanvas} disabled={loading}>Delete</Button>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <Button variant="outline-primary" onClick={Judge} disabled={loading}>
               {loading ? 'Loading………' : '🦁 Judge 🦁'}
             </Button>
@@ -142,13 +150,13 @@ export default function DrawPredict(props: {
               datasets: [
                 {
                   label: 'Probability',
-                  data: predicted,
+                  data: predicted
                 }
-              ],
+              ]
             }}
             options={options}
           />
         </div>
       </div>
-  );
-};
+  )
+}

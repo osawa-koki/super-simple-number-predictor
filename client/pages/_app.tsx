@@ -1,14 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import { type AppProps } from 'next/app'
 
-import '../styles/styles.scss';
-import '../styles/menu.scss';
-import '../styles/draw_predict.scss';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Head from 'next/head';
+import '../styles/styles.scss'
+import '../styles/menu.scss'
+import '../styles/draw_predict.scss'
 
-import setting from '../setting';
+import Head from 'next/head'
 
-export default function MyApp({ Component, pageProps }) {
+import setting from '../setting'
+
+export default function MyApp ({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>
@@ -19,5 +22,5 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
     </>
-  );
+  )
 };
