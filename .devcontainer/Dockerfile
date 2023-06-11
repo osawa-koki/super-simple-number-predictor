@@ -1,3 +1,5 @@
 FROM python:3.11
 WORKDIR /app
-RUN pip install poetry
+RUN apt update -y && \
+    apt install jq -y && \
+    poetry install
