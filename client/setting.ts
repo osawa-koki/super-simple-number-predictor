@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
 import Env from './next.config.js'
 const isProd = process.env.NODE_ENV === 'production'
 

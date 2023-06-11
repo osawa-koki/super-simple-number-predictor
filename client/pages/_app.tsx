@@ -1,3 +1,6 @@
+import React from 'react'
+import { type AppProps } from 'next/app'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import '../styles/styles.scss'
@@ -8,7 +11,7 @@ import Head from 'next/head'
 
 import setting from '../setting'
 
-export default function MyApp ({ Component, pageProps }) {
+export default function MyApp ({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>

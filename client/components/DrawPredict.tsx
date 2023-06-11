@@ -6,7 +6,6 @@ import {
   registerables
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import Layout from './Layout'
 
 ChartJS.register(
   ...registerables
@@ -25,30 +24,35 @@ const options = {
 }
 
 export default function DrawPredict (props: {
-  model_id: number
-  model_name: string
-  model_description: string
-  model_accuracy: number
-  model_loss: number
-}) {
+  modelId: number
+  modelName: string
+  modelDescription: string
+  modelAccuracy: number
+  modelLoss: number
+}): JSX.Element {
   const {
-    model_id,
-    model_name,
-    model_description,
-    model_accuracy,
-    model_loss
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelId,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelName,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelDescription,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelAccuracy,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    modelLoss
   } = props
 
   const [canvas, setCanvas] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(false)
   const [predicted, setPredicted] = useState<number[]>([])
 
-  const ClearCanvas = () => {
+  const ClearCanvas = (): void => {
     canvas.remove.apply(canvas, canvas.getObjects())
     canvas.backgroundColor = 'white'
   }
 
-  const Judge = async () => {
+  const Judge = async (): Promise<void> => {
     try {
       setPredicted([])
       setLoading(true)
@@ -61,6 +65,10 @@ export default function DrawPredict (props: {
 
       // copy the data from the original canvas to the new canvas
       const ctx = dataCanvas.getContext('2d')
+      if (ctx == null) {
+        console.error('ctx is null.')
+        return
+      }
       ctx.drawImage(canvas.getElement(), 0, 0)
 
       // get the data from the new canvas as a binary data
@@ -129,6 +137,7 @@ export default function DrawPredict (props: {
           <div id='Canvas'><canvas id="myCanvas" width={300} height={300} /></div>
           <div id='ButtonContainer'>
             <Button variant="outline-secondary" onClick={ClearCanvas} disabled={loading}>Delete</Button>
+            {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <Button variant="outline-primary" onClick={Judge} disabled={loading}>
               {loading ? 'Loading………' : '🦁 Judge 🦁'}
             </Button>
@@ -150,4 +159,4 @@ export default function DrawPredict (props: {
         </div>
       </div>
   )
-};
+}
