@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["osawa-koki <github@osawa.dev>"]
 readme = "README.md"
-packages = [{include = "super_simple_number_predictor"}]
+packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
