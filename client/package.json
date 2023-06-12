@@ -15,7 +15,7 @@
     "bootstrap": "^5.2.3",
     "chart.js": "^4.1.1",
     "fabric": "^5.3.0",
-    "next": "latest",
+    "next": "^13.4.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-chartjs-2": "^5.1.0",
@@ -24,19 +24,19 @@
     "sass": "^1.57.1"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
+    "@types/node": "^20.3.0",
+    "@types/react": "^18.2.11",
+    "@types/react-dom": "^18.2.4",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-n": "^16.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
-    "typescript": "*"
+    "typescript": "^5.0.0"
   },
   "resolutions": {
-    "@types/react": "^17.0.2"
- }
+    "@types/react": "^18.2.11"
+  }
 }

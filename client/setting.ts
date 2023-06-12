@@ -6,7 +6,7 @@ const setting = {
   isProd,
   basePath: Env.basePath,
   apiPath: isProd ? '' : 'http://localhost:8000',
-  title: '🐸 Next.js Template 🐸'
+  title: '🎯 Number Predictor 🎯'
 }
 
 export default setting
