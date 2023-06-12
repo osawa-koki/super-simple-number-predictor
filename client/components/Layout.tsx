@@ -1,5 +1,6 @@
 import React, { type ReactNode } from 'react'
 import Head from 'next/head'
+import { ToastContainer } from 'react-toastify'
 import setting from '../setting'
 import Menu from './Menu'
 
@@ -39,6 +40,7 @@ const Layout = ({
             children
           )}
     </div>
+    <ToastContainer />
     {footer && (
       <footer>
         <a

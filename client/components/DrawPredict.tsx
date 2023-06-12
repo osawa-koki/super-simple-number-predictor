@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 import { fabric } from 'fabric'
 import Button from 'react-bootstrap/Button'
 import {
@@ -97,25 +98,35 @@ export default function DrawPredict (props: {
           method: 'POST',
           body: formData
         })
-          .then(async res => await res.json())
-          .then(data => {
+          .then(async res => {
+            if (!res.ok) {
+              const text = await res.text()
+              throw new Error(text)
+            }
+            return res.json()
+          })
+          .then((data) => {
             const predicted: number[] = []
             for (let i = 0; i < 10; i++) {
               predicted.push(data[i])
             }
             setPredicted(predicted)
-            setLoading(false)
           })
-          .catch(err => {
+          .catch((err: Error) => {
             console.error(err)
+            toast.error(err.message)
+          })
+          .finally(() => {
             setLoading(false)
           })
       }, false)
 
       // Read the file as an ArrayBuffer
       reader.readAsArrayBuffer(blob)
-    } catch (ex) {
-      console.error(ex)
+    } catch (ex: unknown) {
+      if (ex instanceof Error) {
+        toast.error(ex.message)
+      }
     }
   }
 
