@@ -1,5 +1,7 @@
 # super-simple-number-predictor
 
+![成果物](./docs/fruit.gif)  
+
 ## 実行方法
 
 ```shell
