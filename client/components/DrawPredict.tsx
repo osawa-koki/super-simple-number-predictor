@@ -103,7 +103,7 @@ export default function DrawPredict (props: {
               const text = await res.text()
               throw new Error(text)
             }
-            return res.json()
+            return await res.json()
           })
           .then((data) => {
             const predicted: number[] = []
