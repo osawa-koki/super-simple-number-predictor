@@ -1,3 +1,4 @@
+import numpy as np
 from tensorflow import keras
 import cv2
 
@@ -6,7 +7,7 @@ model_1 = keras.models.load_model('./models/model-1.h5')
 model_2 = keras.models.load_model('./models/model-2.h5')
 model_3 = keras.models.load_model('./models/model-3.h5')
 
-def predict(filename: str, modelId: int) -> dict:
+def predict(filename, modelId):
     image = cv2.imread(filename)
 
     image = 255 - image
