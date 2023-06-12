@@ -9,6 +9,16 @@ const pages = [
     path: '/model-1/',
     emoji: '📈',
     name: 'Model 1'
+  },
+  {
+    path: '/model-2/',
+    emoji: '📈',
+    name: 'Model 2'
+  },
+  {
+    path: '/model-3/',
+    emoji: '📈',
+    name: 'Model 3'
   }
 ]
 
