@@ -18,11 +18,11 @@ app.add_middleware(
 )
 
 @app.get("/api/health")
-def health():
+def health() -> dict:
     return {"status": "ok"}
 
 @app.post("/api/numeric-judge/{modelId}")
-def receive_image(modelId: int, image: bytes = File(...)):
+def receive_image(modelId: int, image: bytes = File(...)) -> dict:
     # GUIDを生成する。
     guid = uuid.uuid4()
     # GUIDを小文字に変換する。
