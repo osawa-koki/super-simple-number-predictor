@@ -7,7 +7,8 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint:check": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test": "exit 0"
   },
   "dependencies": {
     "@types/bootstrap": "^5.2.6",
