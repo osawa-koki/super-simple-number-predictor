@@ -27,22 +27,10 @@ const options = {
 
 export default function DrawPredict (props: {
   modelId: number
-  modelName: string
-  modelDescription: string
-  modelAccuracy: number
-  modelLoss: number
 }): JSX.Element {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     modelId,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    modelName,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    modelDescription,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    modelAccuracy,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    modelLoss
   } = props
 
   const [canvas, setCanvas] = useState<any>(null)
@@ -94,7 +82,7 @@ export default function DrawPredict (props: {
         const formData = new FormData()
         formData.append('image', new File([imageBytes], 'image.png', { type: 'image/png' }))
         // Perform the fetch request
-        fetch(`${setting.apiPath}/api/numeric-judge`, {
+        fetch(`${setting.apiPath}/api/numeric-judge/${modelId}`, {
           method: 'POST',
           body: formData
         })

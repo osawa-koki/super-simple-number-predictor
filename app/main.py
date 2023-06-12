@@ -21,8 +21,8 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
-@app.post("/api/numeric-judge")
-def receive_image(image: bytes = File(...)):
+@app.post("/api/numeric-judge/{modelId}")
+def receive_image(modelId: int, image: bytes = File(...)):
     # GUIDを生成する。
     guid = uuid.uuid4()
     # GUIDを小文字に変換する。
@@ -36,7 +36,7 @@ def receive_image(image: bytes = File(...)):
         f.write(image)
 
     # 画像を予測する。
-    result = predict(filename)
+    result = predict(filename, modelId)
 
     # 予測結果を返す。
     return result
