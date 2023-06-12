@@ -97,8 +97,14 @@ export default function DrawPredict (props: {
           method: 'POST',
           body: formData
         })
-          .then(async res => await res.json())
-          .then(data => {
+          .then(async res => {
+            if (!res.ok) {
+              const text = await res.text()
+              throw new Error(text)
+            }
+            return await res.json()
+          })
+          .then((data) => {
             const predicted: number[] = []
             for (let i = 0; i < 10; i++) {
               predicted.push(data[i])
