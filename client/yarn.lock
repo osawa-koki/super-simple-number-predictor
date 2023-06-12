@@ -211,6 +211,11 @@
   dependencies:
     "@popperjs/core" "^2.9.2"
 
+"@types/fabric@^5.3.3":
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/@types/fabric/-/fabric-5.3.3.tgz#35f66da60bf53f40b9d7ef6d6afa770409e7308f"
+  integrity sha512-O+lGsf5MXhkr4CZhZBE2foxIU1yZklTwhmZxFbTeBNWEqrvwGeq4c8TWJBKAqiISYRu7bDIMLZUPacFodbVD0g==
+
 "@types/json-schema@^7.0.9":
   version "7.0.12"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.12.tgz#d70faba7039d5fca54c83c7dbab41051d2b6f6cb"
