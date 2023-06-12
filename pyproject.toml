@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["osawa-koki <github@osawa.dev>"]
 readme = "README.md"
-packages = [{include = "app"}]
+# packages = [{include = "app"}] # Dockerfile内でパッケージファイルのみでモジュールをインストールするため。
 
 [tool.poetry.dependencies]
 python = "3.11.x"
