@@ -5,12 +5,12 @@ on:
     branches:
       - main
       - develop
-      - 'issue/*'
+      - 'issues/*'
   pull_request:
     branches:
       - main
       - develop
-      - 'issue/*'
+      - 'issues/*'
 
 env:
   client-directory: ./client
