@@ -30,7 +30,7 @@ export default function DrawPredict (props: {
 }): JSX.Element {
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    modelId,
+    modelId
   } = props
 
   const [canvas, setCanvas] = useState<any>(null)
