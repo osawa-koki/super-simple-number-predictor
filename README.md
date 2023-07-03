@@ -2,13 +2,15 @@
 
 💤💤💤 手書き文字を識別するサンプルプログラム。  
 
-![成果物](./docs/fruit.gif)  
+![成果物](./docs/img/fruit.gif)  
+![成果物](./docs/img/fruit.wide.gif)  
 
 ## 実行方法
 
 ```shell
 docker build -t super-simple-number-predictor .
-docker run -it --rm -p 8000:8000 --name super-simple-number-predictor super-simple-number-predictor
+docker run -it --rm -p 80git fetch origin
+git checkout issues/5100:8000 --name super-simple-number-predictor super-simple-number-predictor
 ```
 
 ## モデルの生成
