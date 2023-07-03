@@ -50,7 +50,7 @@ export default function DrawPredict (props: {
       // 画像をバイナリに変換。
       // create a new canvas element to store the data
       const dataCanvas = document.createElement('canvas')
-      const size = canvas.getWidth() * 2 // TODO: なぜか、canvasのサイズが半分になってしまうので、2倍にしておく。
+      const size = canvas.getWidth()
       dataCanvas.width = size
       dataCanvas.height = size
 
